@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米账号登录</title>
+    <style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body {
+		font-family: Arial, sans-serif;
+		display: flex;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.left-panel {
+		width: 25%;
+		height: 100%;
+		background-image: url('img/e-loading/left.png');
+		background-size: cover;
+		background-position: center;
+	}
+	.right-panel {
+		width: 75%;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+	.top-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	.top-bar .logo {
+		display: flex;
+		align-items: center;
+	}
+	.top-bar .logo img {
+		width: 30px;
+		height: 30px;
+		margin-right: 10px;
+	}
+	.top-bar .links {
+		display: flex;
+		gap: 20px;
+		font-size: 14px;
+		color: gray;
+	}
+	.top-bar .links a {
+		text-decoration: none;
+		color: gray;
+		transition: color 0.3s;
+	}
+	.top-bar .links a:hover {
+		color: orange;
+	}
+	.top-bar .language {
+		position: relative;
+	}
+	.top-bar .language .dropdown {
+		display: none;
+		position: absolute;
+		top: 20px;
+		right: 0;
+		background: white;
+		border: 1px solid gray;
+		padding: 5px 10px;
+	}
+	.orange-button {
+		background-color: orange;
+		color: white;
+		font-size: 18px;
+		width: 100%;
+		height: 30px;
+		border: none;
+		border-radius: 4px;
+		margin-top: 10px;
+	}
+	.forgot-password, .phone-login {
+		font-size: 14px;
+		color: orange;
+		display: inline-block;
+		margin-top: 10px;
+	}
+	.top-bar .language:hover .dropdown {
+		display: block;
+	}
+	.main-content {
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+	.hidden {
+		display: none;
+	}
+	.input-group {
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.input-group label {
+		position: absolute;
+		top: 50%;
+		left: 10px;
+		transform: translateY(-50%);
+		color: gray;
+		font-size: 14px;
+		transition: all 0.3s ease;
+		pointer-events: none;
+	}
+	.input-group input {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid gray;
+		border-radius: 4px;
+		font-size: 16px;
+		outline: none;
+	}
+	.input-group input:focus + label,
+	.input-group input:not(:placeholder-shown) + label {
+		top: 5px;
+		font-size: 10px;
+		color: orange;
+	}
+	.input-group input:focus {
+		border-color: orange;
+	}
+	.input-group .error-message {
+		color: red;
+		font-size: 12px;
+		display: none;
+	}
+	.box {
+		width: 400px;
+		padding: 20px;
+		border: 1px solid #ddd;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+	.box h2 {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.tabs {
+		display: flex;
+		justify-content: space-around;
+		cursor: pointer;
+		margin-bottom: 20px;
+	}
+	.tabs div {
+		font-size: 18px;
+		position: relative;
+	}
+	.tabs div.active {
+		font-weight: bold;
+		color: black;
+	}
+	.tabs div.active::after {
+		content: '';
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: orange;
+	}
+	.qr-content, .register-content {
+		display: none;
+	}
+	#toggle-password {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: 16px;
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.app-icons img {
+		width: 40px;
+		height: 40px;
+		margin: 10px;
+	}
+	/*修改片段*/
+	.login-box .tabs div.active {
+		font-weight: bold;
+		color: black;
+	}
+	
+	.login-box .tabs div.active::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: orange;
+	}
+	.login-box .login-btn {
+		width: 100%;
+		padding: 10px;
+		background: orange;
+		color: white;
+		border: none;
+		font-size: 15px;
+		cursor: pointer;
+	} 
+	.login-box .social-login {
+		display: flex;
+		justify-content: space-around;
+		margin: 20px 0;
+	}
+	
+	.login-box .social-login img {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+	}
+	.social-icons {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 10px;
+	}
+	 .social-icons img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+	}
+	.bottom-links {
+		display: flex;
+		justify-content: space-between;
+		margin: 10px 0;
+		font-size: 14px;
+	}
+    </style>
+</head>
+<body>
+    <div class="left-panel"></div>
+    <div class="right-panel">
+        <div class="top-bar">
+            <div class="logo">
+                <img src="img/e-loading/mi.png" alt="logo">
+                <span>小米账号</span>
+            </div>
+            <div class="links">
+                <a href="#">用户协议</a>
+                <a href="#">隐私协议</a>
+                <a href="#">帮助中心</a>
+                <div class="language">
+                    <a href="#">中文(简体)</a>
+                    <div class="dropdown">
+                        <div>中文(繁體)</div>
+                        <div>English</div>
+                        <div>にほんご</div>
+                        <div>한국어</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- 登录页面 -->
+            <div class="box login-content">
+			<!-- 登录表单 -->
+                <div class="tabs">
+                    <div id="login-tab" class="active">登录</div>
+                    <div id="register-tab">注册</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="username" placeholder=" ">
+                    <label for="username">邮箱/手机号/小米ID</label>
+                    <div class="error-message" id="username-error">请输入有效的邮箱或手机号</div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder=" ">
+                    <label for="password">密码</label>
+                    <button type="button" id="toggle-password">👁️</button> <!-- 密码可见性切换按钮 -->
+                    <div class="error-message" id="password-error">密码不能为空</div>
+                </div>
+				 <div class="checkbox">
+					<input type="checkbox" id="agree">
+					<label for="agree">已阅读并同意<b>用户协议</b>和<b>隐私政策</b></label>
+				</div>
+				<button class="orange-button" onclick="login()">登录</button>
+				<div class="bottom-links">
+					<div class="forgot-password">忘记密码？</div>
+					<div class="phone-login" onclick="phoneLogin()">手机号登录</div>
+				</div>
+				<div style="margin: 20px 0; color: gray;font-size: 14px;text-align: center;">其他方式登录</div>
+				<div class="social-icons">
+					<img src="img/e-loading/支付宝.png" alt="支付宝">
+					<img src="img/e-loading/微信.png" alt="微信">
+					<img src="img/e-loading/QQ.png" alt="QQ">
+					<img src="img/e-loading/微博.png" alt="微博">
+				</div>
+                <button onclick="showQR()" style="margin-top:20px;margin-left:130px;border: 1px transparent;background-color: transparent;color:gray;">切换到扫码登录</button>
+            </div>
+            <!-- 扫码登录页面 -->
+            <div class="box qr-content">
+                <div class="qr-box">
+                    <h2>扫码登录 安全快捷</h2>
+                    <img src="img/e-loading/erweima.png" alt="QR Code" style="margin-left: 60px;">
+                    <p>可使用小米手机或平板，点击设置>小米账号后扫码登录，或使用其他扫码工具</p>
+                    <p style="margin: 20px 0; color: gray;font-size: 14px;text-align: center;">支持扫码登录的APP</p>
+                    <div class="app-icons" style="margin-left: 50px;">
+                        <img src="img/e-loading/商城.png" alt="小米商城">
+                        <img src="img/e-loading/汽车.png" alt="小米汽车">
+                        <img src="img/e-loading/音响.png" alt="小米音响">
+                        <img src="img/e-loading/mijia.png" alt="米家">
+                    </div>
+                    <button onclick="showLogin()">返回登录</button>
+                </div>
+            </div>
+
+            <!-- 注册页面 -->
+            <div class="box register-content">
+			<!-- 注册表单 -->
+                <div class="tabs">
+                    <div id="login-tab">登录</div>
+                    <div id="register-tab" class="active">注册</div>
+                </div>
+                <div class="input-group">
+                    <label style="margin-left: 40px;">国家/地区</label>
+                    <select id="country" onchange="updateCountryCode()">
+                        <option value="cn">中国</option>
+                        <option value="uk">英国</option>
+						<option value="us">美国</option>
+						<option value="jp">日本</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="country-code" value="+86" readonly style="width: 20%;">
+                    <input type="text"style="width: 78%;" placeholder="请输入手机号码" required><!-- require表示该空必须填写 -->
+                    <div class="error-message" id="phone-error">请输入有效的手机号码</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" style="width: 75%;" placeholder="请输入验证码" required>
+                    <span id="get-verification-code" style="color: orange;">获取验证码</span>
+                </div>
+                <div class="checkbox">
+                	<input type="checkbox" id="agree">
+                	<label for="agree">已阅读并同意<b>用户协议</b>和<b>隐私政策</b></label>
+                </div>
+                <button class="orange-button" onclick="login()">注册</button>
+				<span id="get-verification-code" style="color: orange; cursor: pointer;">收不到验证码？</span>
+				<button onclick="showLogin1()">返回登录</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginContent = document.querySelector('.login-content');
+        const qrContent = document.querySelector('.qr-content');
+        const registerContent = document.querySelector('.register-content');
+        const togglePasswordBtn = document.getElementById('toggle-password');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const registerButton = document.getElementById('register-button');
+        const agreementCheckbox = document.getElementById('agreement-checkbox');
+
+        // 密码可见性切换功能
+        togglePasswordBtn.addEventListener('click', function() {
+            // 如果密码框的类型是'password'，则切换为'text'，反之亦然
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+        
+        // 显示二维码登录内容的函数
+        function showQR() {
+            loginContent.style.display = 'none';
+            qrContent.style.display = 'block';
+        }
+        
+        // 显示登录内容的函数
+        function showLogin() {
+            qrContent.style.display = 'none';
+            loginContent.style.display = 'block';
+        }
+        function showLogin1() {
+            registerContent.style.display = 'none';
+            loginContent.style.display = 'block';
+        }
+		
+        // 注册选项卡点击事件
+        registerTab.addEventListener('click', () => {
+            loginContent.style.display = 'none';
+            registerContent.style.display = 'block';
+            // 为注册选项卡添加'active'类
+            registerTab.classList.add('active');
+            // 移除登录选项卡的'active'类
+            loginTab.classList.remove('active');
+        });
+        
+        // 登录选项卡点击事件
+        loginTab.addEventListener('click', () => {
+            registerContent.style.display = 'none';
+            loginContent.style.display = 'block';
+            // 为登录选项卡添加'active'类
+            loginTab.classList.add('active');
+            // 移除注册选项卡的'active'类
+            registerTab.classList.remove('active');
+        });
+        
+        // 国家码更新函数
+        function updateCountryCode() {
+            // 获取国家选择框和国家码输入框
+            var countrySelect = document.getElementById('country');
+            var countryCode = document.getElementById('country-code');
+            // 根据选择的国家设置对应的国家码
+            if (countrySelect.value === 'cn') {
+                countryCode.value = '+86';
+            } else if (countrySelect.value === 'uk') {
+                countryCode.value = '+44';
+            } else if (countrySelect.value === 'us') {
+                countryCode.value = '+1';
+            } else if (countrySelect.value === 'jp') {
+                countryCode.value = '+81'; 
+            }
+        }
+    
+        
+        // 页面加载时默认显示登录页面
+        window.onload = function() {
+            // 移除登录内容的'hidden'类
+            document.querySelector('.login-content').classList.remove('hidden');
+            // 为注册内容和二维码内容添加'hidden'类
+            document.querySelector('.register-content').classList.add('hidden');
+            document.querySelector('.qr-content').classList.add('hidden');
+        };
+        
+        // 登录逻辑函数
+        function login() {
+            // 获取用户名和密码输入框的值
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === "admin" && password === "password") {
+                // 如果正确，跳转到index.html页面
+                window.location.href = "index.html";
+            } else {
+                // 如果错误，弹出警告框
+                alert("用户名或密码错误");
+            }
+        }
+
+    </script>
+</body>
+</html>

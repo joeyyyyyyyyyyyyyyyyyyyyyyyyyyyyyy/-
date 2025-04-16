@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="./css/mi.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/iconfont/iconfont.css">
+    <title>小米手环9 Pro</title>
+    <style>
+   * {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	 body {
+		 background-color: #F5F5F5;
+	 }
+	.container {
+		display: flex;
+		width: 80%;
+		background-color: #fff;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		margin-left:10% ;
+	}
+	.left {
+		width: 50%;
+		padding: 20px;
+	}
+	.left img {
+		width: 100%;
+		height: auto;
+	}
+	.right {
+		width: 50%;
+		padding: 20px;
+	}
+	.title {
+		font-size: 25px;
+		color: #000;
+		margin-bottom: 10px;
+	}
+	.description {
+		font-size: 14px;
+		color: #888;
+		margin-bottom: 15px;
+	}
+	.price-info {
+		font-size: 14px;
+		color: #f60;
+		margin-bottom: 5px;
+	}
+	.price {
+		font-size: 15px;
+		color: #f60;
+		margin-bottom: 15px;
+	}
+	.divider {
+		width: 100%;
+		height: 1px;
+		background-color: #ddd;
+		margin-bottom: 15px;
+	}
+	.address-box {
+		background-color: #f5f5f5;
+		padding: 10px;
+		margin-bottom: 15px;
+		font-size: 14px;
+		color: #000;
+		position: relative;
+	}
+	.address-box span.orange {
+		color: #f60;
+		cursor: pointer;
+	}
+	.address-dropdown {
+		position: absolute;
+		top: 40px;
+		left: 0;
+		background: #fff;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+		padding: 10px;
+		display: none;
+		z-index: 10;
+	}
+	.address-dropdown select {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	.color-select {
+		font-size: 20px;
+		color: #000;
+		margin-bottom: 10px;
+	}
+	.buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	.buttons button {
+		width: 45%;
+		padding: 5px 0;
+		font-size: 14px;
+		color: #000;
+		border: 1px solid #ddd;
+		background-color: #fff;
+		cursor: pointer;
+	}
+	.buttons button:hover, .buttons button.active {
+		color: #f60;
+		border-color: #f60;
+	}
+	.actions {
+		display: flex;
+		margin-top: 15px;
+		gap: 10px;
+	}
+	.actions button {
+		padding: 10px 20px;
+		font-size: 15px;
+		cursor: pointer;
+		width: 60%;
+	}
+	.notify {
+		color: #f60;
+		border: 1px solid #f60;
+		background-color: #fff;
+	}
+	.like {
+		background-color: #ccc;
+		color: #fff;
+		border: none;
+		height: 40px;
+	}
+	.like.active {
+		background-color: red;
+	}
+	.info {
+		font-size: 12px;
+		color: #888;
+		margin-top: 20px;
+		line-height: 1.5;
+	}
+	.img{
+		width: 80%;
+		height: 80%;
+		margin-left:10% ;
+		
+	}
+    </style>
+</head>
+<body>
+	<!-- 黑色导航 start -->
+	<div class="black-nav">
+		<div class="wrap">
+			<ul class="black-nav-left">
+				<li><a href="#">小米官网</a><span>|</span></li>
+				<li><a href="index.html">小米商城</a><span>|</span></li>
+				<li><a href="#">小米澎湃OS</a><span>|</span></li>
+				<li><a href="#">小米汽车</a><span>|</span></li>
+				<li><a href="#">云服务</a><span>|</span></li>
+				<li><a href="#">loT</a><span>|</span></li>
+				<li><a href="#">有品</a><span>|</span></li>
+				<li><a href="#">小爱开放平台</a><span>|</span></li>
+				<li><a href="#">资质证明</a><span>|</span></li>
+				<li><a href="#">协议规则</a><span>|</span></li>
+				<li>
+					<a href="#">下载APP</a>
+					<span>|</span>
+					<div class="download">
+						<img src="./img/download.png" alt="">
+						<p>小米商城APP</p>
+					</div>
+					<div class="stri"></div>
+				</li>
+				<li><a href="#">Select Location</a><span>|</span></li>
+			</ul>
+			<ul class="black-nav-right">
+				<li><a href="login.html">登录</a><span>|</span></li>
+				<li><a href="#">注册</a><span>|</span></li>
+				<li><a href="#">消息通知</a><span>|</span></li>
+				<li class="cart">
+					<a href="#">
+						<i class="iconfont">&#xe645;</i>
+						<i>购物车（0）</i>
+					</a>
+					<div class="cart-list">
+						购物车中还没有商品，赶紧选购吧
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 黑色导航 end -->
+
+	<!-- 白色导航 start -->
+	<div class="white-nav">
+		<div class="wrap">
+			<div class="logo">
+				<img src="./img/mi-home.png" alt="mi-home" class="mi-home">
+				<img src="./img/mi-logo.png" alt="mi-logo" class="mi-logo">
+			</div>
+			<div class="nav-bar">
+				<ul>
+					<li><img src="./img/white.png" alt=""></li>
+					<li>
+						<a href="#">Xiaomi手机</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/1.png" width="80%" height="auto" alt="Xiaomi 15">
+												
+											</div>
+											<p class="name">Xiaomi 15</p>
+											<p class="price">4499元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/2.png" width="80%" height="auto" alt="Xiaomi 15 Pro">
+											</div>
+											<p class="name">Xiaomi 15 Pro</p>
+											<p class="price">5299元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/3.png" width="80%" height="auto" alt="Xiaomi 15 定制版">
+											</div>
+											<p class="name">Xiaomi 15 定制版</p>
+											<p class="price">4999元</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/4.png" width="80%" height="auto" alt="Xiaomi MIX Fold 4">
+											</div>
+											<p class="name">Xiaomi MIX Fold 4</p>
+											<p class="price">8999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/5.png" width="80%" height="auto" alt="Xiaomi MIX Flip">
+											</div>
+											<p class="name">Xiaomi MIX Flip</p>
+											<p class="price">5999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/Xiaomi-phone/6.png" width="80%" height="auto" alt="Xiaomi Civi 4 Pro">
+											</div>
+											<p class="name">Xiaomi Civi 4 Pro</p>
+											<p class="price">2799元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">REDMI手机</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/1.png" width="80%" height="auto" alt="REDMI K80 Pro">
+												
+											</div>
+											<p class="name">REDMI K80 Pro</p>
+											<p class="price">3699元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/2.png" width="80%" height="auto" alt="REDMI K80">
+											</div>
+											<p class="name">REDMI K80</p>
+											<p class="price">2499元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/3.png" width="80%" height="auto" alt="Redmi Note 14 Pro+">
+											</div>
+											<p class="name">Redmi Note 14 Pro+</p>
+											<p class="price">1899元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/4.png" width="80%" height="auto" alt="Redmi Note 14 Pro">
+											</div>
+											<p class="name">Redmi Note 14 Pro</p>
+											<p class="price">1399元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/5.png" width="80%" height="auto" alt="Redmi Note 14 5G">
+											</div>
+											<p class="name">Redmi Note 14 5G</p>
+											<p class="price">1099元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/REDMI-phone/6.png" width="80%" height="auto" alt="Xiaomi K70 至尊版">
+											</div>
+											<p class="name">Xiaomi K70 至尊版</p>
+											<p class="price">2599元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">电视</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/1.png" width="80%" height="auto" alt="小米电视S Pro Mini LED系列">
+												
+											</div>
+											<p class="name">小米电视S Pro Mini LED系列</p>
+											<p class="price">4999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/2.png" width="80%" height="auto" alt="小米电视S Mini LED系列">
+											</div>
+											<p class="name">小米电视S Mini LED系列</p>
+											<p class="price">2999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/3.png" width="80%" height="auto" alt="Redmi 智能电视 X 2025款">
+											</div>
+											<p class="name">Redmi 智能电视 X 2025款</p>
+											<p class="price">2599元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/4.png" width="80%" height="auto" alt="Redmi 电视MAX系列">
+											</div>
+											<p class="name">Redmi 电视MAX系列</p>
+											<p class="price">4999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/5.png" width="80%" height="auto" alt="Redmi A系列电视 2025款">
+											</div>
+											<p class="name">Redmi A系列电视 2025款</p>
+											<p class="price">799元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/TV/6.png" width="80%" height="auto" alt="Redmi智能电视 A Pro系列">
+											</div>
+											<p class="name">Redmi智能电视 A Pro系列</p>
+											<p class="price">1599元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					
+					<li>
+						<a href="#">笔记本</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/5.png" width="80%" height="auto" alt="Redmi G Pro 游戏本 2024">
+												
+											</div>
+											<p class="name">Redmi G Pro 游戏本 2024</p>
+											<p class="price">8499元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/4.png" width="80%" height="auto" alt="Redmi Book Pro 14 2024">
+											</div>
+											<p class="name">Redmi Book Pro 14 2024</p>
+											<p class="price">4999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/3.png" width="80%" height="auto" alt="Redmi Book Pro 16 2024">
+											</div>
+											<p class="name">Redmi Book Pro 16 2024</p>
+											<p class="price">6399元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/4.png" width="80%" height="auto" alt="Redmi Book 16 2024">
+											</div>
+											<p class="name">Redmi Book 16 2024</p>
+											<p class="price">6399元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/5.png" width="80%" height="auto" alt="Redmi Book 14 2024">
+											</div>
+											<p class="name">Redmi Book 14 2024</p>
+											<p class="price">3699元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/laptop/6.png" width="80%" height="auto" alt="Redmi Book 14 2024">
+											</div>
+											<p class="name">Redmi Book 14 2024</p>
+											<p class="price">4299元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">平板</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/1.png" width="80%" height="auto" alt="Xiaomi Pad 7 Pr">
+												
+											</div>
+											<p class="name">Xiaomi Pad 7 Pro</p>
+											<p class="price">2499元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/2.png" width="80%" height="auto" alt="Xiaomi Pad 7">
+											</div>
+											<p class="name">Xiaomi Pad 7</p>
+											<p class="price">1999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/3.png" width="80%" height="auto" alt="Redmi Pad Pro">
+											</div>
+											<p class="name">Redmi Pad Pro</p>
+											<p class="price">1499元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/4.png" width="80%" height="auto" alt="Xiaomi Pad 6S Pro 12.4">
+											</div>
+											<p class="name">Xiaomi Pad 6S Pro 12.4</p>
+											<p class="price">2999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/5.png" width="80%" height="auto" alt="Redmi Pad SE">
+											</div>
+											<p class="name">Redmi Pad SE</p>
+											<p class="price">899元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/ipad/6.png" width="80%" height="auto" alt="Xiaomi Pad 6 Max 14">
+											</div>
+											<p class="name">Xiaomi Pad 6 Max 14</p>
+											<p class="price">3799元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">家电</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/1.png" width="80%" height="auto" alt="米家冰箱对开门610L墨羽岩">
+												
+											</div>
+											<p class="name">米家冰箱对开门610L墨羽岩</p>
+											<p class="price">2199元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/2.png" width="80%" height="auto" alt="米家冰箱 对开门536L墨羽岩">
+											</div>
+											<p class="name">米家冰箱 对开门536L墨羽岩</p>
+											<p class="price">1999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/3.png" width="80%" height="auto" alt="新风空调立式3匹">
+											</div>
+											<p class="name">新风空调立式3匹</p>
+											<p class="price">5999元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/4.png" width="80%" height="auto" alt="小米空调1.5匹新1级能效">
+											</div>
+											<p class="name">小米空调1.5匹新1级能效</p>
+											<p class="price">2299元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/5.png" width="80%" height="auto" alt="米家洗烘一体机12kg">
+											</div>
+											<p class="name">米家洗烘一体机12kg</p>
+											<p class="price">2099元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/house/6.png" width="80%" height="auto" alt="米家冰柜 203L">
+											</div>
+											<p class="name">米家冰柜 203L</p>
+											<p class="price">799元起</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#">路由器</a>
+						<div class="nav-bar-list">
+							<div class="wrap">
+								<ul>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/1.png" width="80%" height="auto" alt="Xiaomi路由器AX3000T">
+												
+											</div>
+											<p class="name">Xiaomi路由器AX3000T</p>
+											<p class="price">159元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/2.png" width="80%" height="auto" alt="Xiaomi全屋路由 BE3600Pro套装">
+											</div>
+											<p class="name">Xiaomi全屋路由 BE3600Pro套装</p>
+											<p class="price">699元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/3.png" width="80%" height="auto" alt="Xiaomi路由器BE3600">
+											</div>
+											<p class="name">Xiaomi路由器BE3600</p>
+											<p class="price">299元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/4.png" width="80%" height="auto" alt="Xiaomi路由器 BE6500 Pro">
+											</div>
+											<p class="name">Xiaomi路由器 BE6500 Pro</p>
+											<p class="price">649元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/5.png" width="80%" height="auto" alt="Xiaomi路由器 BE5000">
+											</div>
+											<p class="name">Xiaomi路由器 BE5000</p>
+											<p class="price">279元起</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<div class="img-box">
+												<img src="./img/white-nav/cat/6.png" width="80%" height="auto" alt="查看全部小米路由器">
+											</div>
+											<p class="name">查看全部</br>
+											小米路由器</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li><a href="seriver.html">服务中心</a></li>
+					<li><a href="#">社区</a></li>
+				</ul>
+			</div>
+			<div class="search">
+				<input type="text" placeholder="Redmi K70至尊版">
+				<button class="iconfont">&#xe631;</button>
+			</div>
+		</div>
+	</div>
+	<!-- 白色导航 end -->
+	<!-- 商品详情页start -->
+    <div class="container">
+        <!-- Left Side -->
+        <div class="left">
+            <img src="./img/d-watch9PRO/1.jpg" alt="小米手环9 Pro">
+        </div>
+        <!-- Right Side -->
+        <div class="right">
+            <div class="title">小米手环9 Pro</div>
+            <div class="description">超窄四等边大屏|金属机身|21天超长续航</div>
+            <div class="price-info">小米自营</div>
+            <div class="price">399元</div>
+            <div class="divider"></div>
+
+            <!-- Address Section -->
+            <div class="address-box">
+                <div id="address">北京 北京市 海淀区 清河街道 <span class="orange" onclick="toggleAddressDropdown()">修改</span></div>
+                <div class="warning">该地区暂时缺货</div>
+                <div class="address-dropdown" id="addressDropdown">
+                    <select id="province" onchange="loadCities()"></select>
+                    <select id="city" onchange="loadAreas()"></select>
+                    <select id="area" onchange="updateAddress()"></select>
+                </div>
+            </div>
+
+            <!-- Color Section -->
+            <div class="color-select">选择颜色</div>
+            <div class="buttons">
+                <button class="active" onclick="selectColor(this)">黑色</button>
+                <button onclick="selectColor(this)">银色</button>
+                <button onclick="selectColor(this)">粉金</button>
+                <button onclick="selectColor(this)">乳酪白</button>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="notify">到货通知</button>
+                <button class="like" onclick="toggleLike(this)">❤ 喜欢</button>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info">
+                □ 小米自营 □ 小米发货 □ 7天无理由退货（到店自取拆封后不支持） □ 运费说明<br>
+                □ 企业信息 □ 7天价格保护
+            </div>
+        </div>
+    </div>
+	<!-- 商品详情页end -->
+	<div class="img">
+		<img src="img/d-watch9PRO/2.png"/ width="100%" height="auto">
+	</div>
+	<!-- 页脚模块 start -->
+	<div class="footer">
+	    <div class="wrap">
+	        <div class="footer-service">
+	            <ul>
+	                <li>
+	                    <a href="#">
+	                        <i class="iconfont">&#xe635;</i>
+	                        <span>预约维修服务</span>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="iconfont">&#xe602;</i>
+	                        <span>7天无理由退货</span>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="iconfont">&#xe61d;</i>
+	                        <span>15天免费换货</span>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="iconfont">&#xe600;</i>
+	                        <span>满69包邮</span>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="iconfont">&#xe62f;</i>
+	                        <span>1100余家售后网点</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	        <div class="footer-link">
+				<ul>
+				    <li> </li>
+				    <li><a href="#"> </a></li>
+				    <li><a href="#"> </a></li>
+				</ul>
+	            <ul>
+	                <li>选购指南</li>
+	                <li><a href="#">手机</a></li>
+	                <li><a href="#">电视</a></li>
+	                <li><a href="#">笔记本</a></li>
+					<li><a href="#">平板</a></li>
+					<li><a href="#">穿戴</a></li>
+					<li><a href="#">耳机</a></li>
+	                <li><a href="#">家电</a></li>
+	                <li><a href="#">路由器</a></li>
+	                <li><a href="#">音响</a></li>
+	                <li><a href="#">配件</a></li>
+	            </ul>
+	            <ul>
+	                <li>服务中心</li>
+	                <li><a href="#">申请售后</a></li>
+	                <li><a href="#">售后政策</a></li>
+	                <li><a href="#">维修服务价格</a></li>
+					<li><a href="#">订单查询</a></li>
+					<li><a href="#">以旧换新</a></li>
+					<li><a href="#">保障服务</a></li>
+	                <li><a href="#">防伪查询</a></li>
+					<li><a href="#">F码通道</a></li>
+	            </ul>
+	            <ul>
+	                <li>线下门店</li>
+	                <li><a href="#">小米之家</a></li>
+	                <li><a href="#">服务网点</a></li>
+	                <li><a href="#">授权体验店/专区</a></li>
+	            </ul>
+	            <ul>
+	                <li>关于小米</li>
+	                <li><a href="#">了解小米</a></li>
+	                <li><a href="#">加入小米</a></li>
+	                <li><a href="#">投资者关系</a></li>
+					<li><a href="#">可持续发展</a></li>
+					<li><a href="#">廉洁举报</a></li>
+	            </ul>
+	            <ul>
+	                <li>关注我们</li>
+	                <li><a href="#">新浪微博</a></li>
+	                <li><a href="#">官方微信</a></li>
+	                <li><a href="#">联系我们</a></li>
+					<li><a href="#">公益基金会</a></li>
+	            </ul>
+	            
+	            <div class="footer-aside">
+	                <p class="tel">400-100-5678</p>
+	                <p class="time">8:00-18:00（仅收市话费）</p>
+	                <a href="#" class="kefu">人工客服</a>
+					<p class="tel">400-180-8888</p>
+					<p class="time">8:00-18:00（仅收市话费）</p>
+					<p class="time">适用于：MIX FOLD、巨屏电视系列</p>
+					<a href="#" class="kefu">人工客服</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- 页脚模块 end -->
+    <script>
+        const provinces = {
+            '浙江省': ['宁波市', '杭州市','温州市','嘉兴市','湖州市','绍兴市','金华市','衢州市','舟山市','台州市','丽水市'],
+            '北京市': ['东城区', '西城区'],
+        };
+        const cities = {
+            '宁波市': ['海曙区', '江北区','镇海区', '北仑区','鄞州区', '奉化区'],
+            '杭州市': ['西湖区', '上城区','下城区', '江干区','拱墅区', '滨江区','萧山区', '余杭区','富阳区', '临平区'],
+			'温州市': ['鹿城区','龙湾区','瓯海区','洞头区','瑞安市','乐清市','龙港市','永嘉县','平阳县','苍南县','文成县','泰顺县'],
+            '东城区': ['天安门', '景山'],
+			'西城区': ['天桥','椿树街道','陶然亭']
+        };
+
+        // 加载省份到下拉列表
+        function loadProvinces() {
+            const provinceSelect = document.getElementById('province'); // 获取省份下拉列表元素
+            provinceSelect.innerHTML = '<option>请选择省</option>'; // 初始化下拉列表，设置默认选项
+            Object.keys(provinces).forEach(p => provinceSelect.innerHTML += `<option>${p}</option>`); // 遍历省份对象，为每个省份添加选项
+        }
+        
+        // 根据选择的省份加载对应的城市到下拉列表
+        function loadCities() {
+            const province = document.getElementById('province').value; // 获取选中的省份
+            const citySelect = document.getElementById('city'); // 获取城市下拉列表元素
+            citySelect.innerHTML = '<option>请选择市</option>'; // 初始化下拉列表，设置默认选项
+            (provinces[province] || []).forEach(c => citySelect.innerHTML += `<option>${c}</option>`); // 根据省份加载对应的城市
+        }
+        
+        // 根据选择的城市加载对应的区域到下拉列表
+        function loadAreas() {
+            const city = document.getElementById('city').value; // 获取选中的城市
+            const areaSelect = document.getElementById('area'); // 获取区域下拉列表元素
+            areaSelect.innerHTML = '<option>请选择区</option>'; // 初始化下拉列表，设置默认选项
+            (cities[city] || []).forEach(a => areaSelect.innerHTML += `<option>${a}</option>`); // 根据城市加载对应的区域
+        }
+        
+        // 更新地址显示，根据选择的省份、城市和区域
+        function updateAddress() {
+            const province = document.getElementById('province').value; // 获取选中的省份
+            const city = document.getElementById('city').value; // 获取选中的城市
+            const area = document.getElementById('area').value; // 获取选中的区域
+            if (province && city && area) { // 如果省份、城市和区域都已选择
+                document.getElementById('address').innerHTML = `${province} ${city} ${area} <span class="orange" onclick="toggleAddressDropdown()">修改</span>`; // 更新地址显示，并添加修改链接
+                document.getElementById('addressDropdown').style.display = 'none'; // 隐藏地址下拉列表
+            }
+        }
+        
+        // 切换地址下拉列表的显示状态
+        function toggleAddressDropdown() {
+            const dropdown = document.getElementById('addressDropdown'); // 获取地址下拉列表元素
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // 切换显示状态
+            loadProvinces(); // 重新加载省份，重置下拉列表
+        }
+        
+        // 选择颜色按钮时，激活该按钮并取消其他按钮的激活状态
+        function selectColor(button) {
+            document.querySelectorAll('.buttons button').forEach(btn => btn.classList.remove('active')); // 移除所有颜色按钮的激活状态
+            button.classList.add('active'); // 激活当前按钮
+        }
+        
+        // 切换喜欢按钮的激活状态
+        function toggleLike(button) {
+            button.classList.toggle('active'); // 切换按钮的激活状态
+        }
+    </script>
+</body>
+</html>
