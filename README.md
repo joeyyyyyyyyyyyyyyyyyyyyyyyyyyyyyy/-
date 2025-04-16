@@ -1,8 +1,6 @@
 # -
-技术栈：HTML5/CSS3/JavaScript + Bootstrap + HBuilder X
 类小米官网前端开发 | 独立开发
 技术栈：HTML5/CSS3/JavaScript + Bootstrap + HBuilder X
-项目源码：[GitHub链接]（建议补充） | ​在线演示：[部署地址]（建议用GitHub Pages发布）
 
 ​JavaScript 核心功能实现
 ​用户交互逻辑：
